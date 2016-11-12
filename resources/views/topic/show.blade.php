@@ -1,0 +1,29 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ $topic->title }}</strong>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div>
+                            <p style="white-space: pre">{{ $topic->body }}</p>
+                        </div>
+
+                        <div class="text-right">
+                            By <strong>{{ $topic->user->name }}</strong>
+                            at <strong>{{ $topic->created_at }}</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

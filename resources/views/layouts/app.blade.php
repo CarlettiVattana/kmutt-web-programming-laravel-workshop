@@ -12,6 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .table-linkable > tbody > tr {
+            cursor: pointer;
+        }
+    </style>
+
 
     <!-- Scripts -->
     <script>

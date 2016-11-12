@@ -47,7 +47,7 @@ class TopicController extends Controller
         $topic = new Topic($request->all());
         $topic->user()->associate(Auth::user());
         $topic->save();
-        return redirect()->action('TopicController@index');
+        return redirect()->action('TopicController@show', $topic->id);
     }
 
     /**
@@ -58,7 +58,8 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $topic = Topic::findOrFail($id);
+        return view('topic.show')->withTopic($topic);
     }
 
     /**
