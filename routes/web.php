@@ -17,3 +17,4 @@ Auth::routes();
 Route::get('/', 'TopicController@index');
 
 Route::resource('/topic', 'TopicController');
+Route::post('/topic/{id}', 'TopicController@comment');

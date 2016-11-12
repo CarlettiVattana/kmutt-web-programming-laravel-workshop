@@ -65,6 +65,25 @@ class TopicController extends Controller
     }
 
     /**
+     * Store a newly created comment in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function comment($id, Request $request)
+    {
+        if (Auth::guest()) {
+            App::abort(403, 'Unauthorized action.');
+        }
+        $topic = Topic::findOrFail($id);
+        $comment = new Comment($request->all());
+        $comment->topic()->associate($topic);
+        $comment->user()->associate(Auth::user());
+        $comment->save();
+        return redirect()->action('TopicController@show', $topic->id);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

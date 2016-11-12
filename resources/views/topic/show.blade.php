@@ -32,6 +32,8 @@
                             </div>
                         @endforeach
 
+                        @include('comment.form')
+
                     </div>
 
                 </div>
