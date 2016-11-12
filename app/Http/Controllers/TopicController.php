@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -59,7 +60,8 @@ class TopicController extends Controller
     public function show($id)
     {
         $topic = Topic::findOrFail($id);
-        return view('topic.show')->withTopic($topic);
+        $comments = $topic->comments->sortBy('created_at');
+        return view('topic.show')->withTopic($topic)->withComments($comments);
     }
 
     /**

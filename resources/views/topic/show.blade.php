@@ -20,6 +20,18 @@
                             at <strong>{{ $topic->created_at }}</strong>
                         </div>
 
+                        @foreach($comments as $comment)
+                            <hr />
+                            <div>
+                                <p style="white-space: pre">{{ $comment->body }}</p>
+                            </div>
+
+                            <div class="text-right">
+                                By <strong>{{ $comment->user->name }}</strong>
+                                at <strong>{{ $comment->created_at }}</strong>
+                            </div>
+                        @endforeach
+
                     </div>
 
                 </div>
